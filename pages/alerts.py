@@ -7,6 +7,7 @@ class Alert(BasePage):
         self.alert1 = WebElement(driver, '#alertButton')
         self.alert2 = WebElement(driver, '#confirmButton')
         self.alert3 = WebElement(driver, '#promtButton')
+        self.alert4 = WebElement(driver, '#timerAlertButton')
         self.confresult = WebElement(driver, '#confirmResult')
         self.promptresult = WebElement(driver, '#promptResult')
         super().__init__(driver, self.base_url)
