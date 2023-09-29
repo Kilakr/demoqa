@@ -6,14 +6,10 @@ from conftest import browser
 from pages.alerts import Alert
 from pages.browser_tab import BrowserTab
 import time
-
-def test_seo_page(browser):
-    page_check1 = DemoQa(browser)
-    page_check1.visit()
-    return page_check1.get_title() == 'DEMOQA'
 @pytest.mark.parametrize("pages", [Alert, DemoQa, BrowserTab])
-def test_check_title_all_pages(browser, pages):
+def test_seo_meta(browser,pages):
     page = pages(browser)
     page.visit()
-    time.sleep(2)
-    assert page.get_title() == 'DEMOQA'
+    assert page.meta.exist()
+    assert page.meta.get_dom_attribute('name') == 'viewport'
+    assert page.meta.get_dom_attribute('content') == 'width=device-width,initial-scale=1'
